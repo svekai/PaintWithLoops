@@ -1,74 +1,55 @@
-import { getBox, render } from "./box.js";
+import {
+  render,
+  callMethodForEveryBoxOneSecondApart,
+  saratestar,
+  createBoxRow,
+  createBoxMatrix,
+  sleep
+} from "./renderUtils.js";
+import {
+  changeColorOfBox,
+  boxIsOfColor,
+  makeBoxVisible,
+  makeBoxInVisible
+} from "./boxUtils.js";
 
-var boxObject1 = getBox("blue");
-var boxObject2 = getBox("purple");
-makeBoxInVisible(boxObject2);
-var boxes = [];
-var boxes2 = [];
+//Uncomment this if you want a single row to be shown
+//var boxes = createBoxRow(10);
 
-boxes.push(boxObject1);
-boxes.push(boxObject2);
-boxes.push(getBox("green"));
+//Uncomment this if you want a matrix to be shown
+var boxes = createBoxMatrix(10);
 
+//Uncomment this to see an ugly example.
+//for (var i = 0; i < boxes.length; i++) {
+//  for (var j = 0; j < boxes[i].length; j++) {
+//    if (
+//      ((i === 2 || i === 3) && j > 1 && j < 8) ||
+//      (i > 1 && i < 8 && j > 3 && j < 6)
+//    ) {
+//      changeColorOfBox(boxes[i][j], "green");
+//    } else {
+//      changeColorOfBox(boxes[i][j], "lightpink");
+//    }
+//  }
+//}
 
-var boxObject12 = getBox("blue");
-var boxObject22 = getBox("purple");
-makeBoxInVisible(boxObject22);
-boxes2.push(boxObject12);
-boxes2.push(boxObject22);
-boxes2.push(getBox("green"));
+render(boxes);
 
-var boxes2D = [];
-boxes2D.push(boxes);
-boxes2D.push(boxes2);
+//This can be used as more advanced examples
+//callMethodForEveryBoxOneSecondApart(myFunction, boxes2D);
+//callMethodToRender1SecondApartWithCondition(myFunction, myFunction2, myConditions, boxes);
 
-render(boxes2D);
-callMethodForEveryBoxOneSecondApart(myFunction, boxes2D);
+//function myFunction(box) {
+//  changeColorOfBox(box, "darkblue");
+//}
 
-function myFunction(box) {
-  changeColorOfBox(box, "red");
-}
+//function myFunction2(box) {
+//  changeColorOfBox(box, "lightpink");
+//}
 
-function callMethodForEveryBoxOneSecondApart(myAwesomeFunction, boxes) {
-  var timer = 1000;
-  if (!Array.isArray(boxes)) {
-    return;
-  } else if (boxes.length === 0) {
-    return;
-  } if (Array.isArray(boxes[0])) {
-    boxes.forEach((boxRow) => {
-      boxRow.forEach((box) => {
-        windowTimeOut(myAwesomeFunction, box, timer, boxes);
-        timer += 1000;
-      })
-    });
-  } else {
-    boxes.forEach((box) => {
-      windowTimeOut(myAwesomeFunction, box, timer, boxes);
-      timer += 1000;
-    });
-  }
-}
-
-function windowTimeOut(myFunction, box, timer, boxes) {
-      window.setTimeout(function () {
-        myFunction(box);
-        render(boxes);
-      }, timer);
-}
-
-function changeColorOfBox(box, color) {
-  box.color = color;
-}
-
-function boxIsOfColor(box, color) {
-  return box.color === color;
-}
-
-function makeBoxVisible(box) {
-  box.visible = true;
-}
-
-function makeBoxInVisible(box) {
-  box.visible = false;
-}
+//function myConditions(i, j, boxes) {
+//  return (
+//    ((i === 2 || i === 3) && j > 1 && j < 8) ||
+//    (i > 1 && i < 8 && j > 3 && j < 6)
+//  );
+//}
