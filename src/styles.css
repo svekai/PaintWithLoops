@@ -1,0 +1,12 @@
+.box {
+  height: 30px;
+  width: 30px;
+}
+
+.border {
+  border: solid 1px black;
+}
+
+.table {
+  border-spacing: 0px;
+}
