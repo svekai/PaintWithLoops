@@ -45,7 +45,11 @@ export function createBoxMatrix(numberOfBoxes) {
 }
 
 function getTableWithOneRowHTML(boxes) {
-  return '<table class="border table">' + getRowHTML(boxes) + "</table>";
+  return (
+    '<table class="border one-row-table">' +
+    getRowHTML(boxes, "box") +
+    "</table>"
+  );
 }
 
 function getTableHTML(boxes) {
@@ -57,21 +61,27 @@ function getTableHTML(boxes) {
   return string;
 }
 
-function getRowHTML(boxes) {
-  return "<tr>" + getHTMLForBoxes(boxes) + "</tr>";
+function getRowHTML(boxes, boxClass) {
+  return "<tr>" + getHTMLForBoxes(boxes, boxClass) + "</tr>";
 }
 
-function getHTMLForBoxes(boxes) {
+function getHTMLForBoxes(boxes, boxClass) {
   var string = "";
   boxes.forEach((box) => {
-    string += getHTMLForBox(box);
+    string += getHTMLForBox(box, boxClass);
   });
   return string;
 }
 
-function getHTMLForBox(box) {
+function getHTMLForBox(box, boxClass) {
   var color = box.visible ? box.color : undefined;
-  return '<td class="box border" style="background-color:' + color + '"</td>';
+  return (
+    '<td class="' +
+    boxClass +
+    ' border" style="background-color:' +
+    color +
+    '"</td>'
+  );
 }
 
 export function callMethodForEveryBoxOneSecondApart(myAwesomeFunction, boxes) {

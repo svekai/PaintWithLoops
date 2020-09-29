@@ -12,5 +12,11 @@
 }
 
 .table {
+  height: 400px;
+  width: 400px;
+  border-spacing: 0px;
+}
+
+.one-row-table {
   border-spacing: 0px;
 }

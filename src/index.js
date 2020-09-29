@@ -14,10 +14,10 @@ import {
 } from "./boxUtils.js";
 
 //Uncomment this if you want a single row to be shown
-//var boxes = createBoxRow(10);
+var boxes = createBoxRow(10);
 
 //Uncomment this if you want a matrix to be shown
-var boxes = createBoxMatrix(10);
+//var boxes = createBoxMatrix(10);
 
 //Uncomment this to see an ugly example.
 //for (var i = 0; i < boxes.length; i++) {
