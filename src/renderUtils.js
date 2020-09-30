@@ -106,6 +106,17 @@ export function callMethodForEveryBoxOneSecondApart(myAwesomeFunction, boxes) {
   }
 }
 
+export function callMethodInXMilliSeconds(
+  myAwesomeFunction,
+  boxes,
+  milliSeconds
+) {
+  window.setTimeout(function () {
+    myAwesomeFunction(boxes);
+    render(boxes);
+  }, milliSeconds);
+}
+
 function windowTimeOut(myFunction, box, timer, boxes) {
   window.setTimeout(function () {
     myFunction(box);
@@ -113,7 +124,7 @@ function windowTimeOut(myFunction, box, timer, boxes) {
   }, timer);
 }
 
-export function callMethodToRender1SecondApartWithCondition(
+export function callMethodToRenderOneSecondApartWithCondition(
   method,
   method2,
   conditionMethod,
@@ -143,15 +154,6 @@ export function callMethodToRender1SecondApartWithCondition(
         windowTimeOut(method, boxes[k], timer, boxes);
         timer += 1000;
       }
-    }
-  }
-}
-
-export function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if (new Date().getTime() - start > milliseconds) {
-      break;
     }
   }
 }
